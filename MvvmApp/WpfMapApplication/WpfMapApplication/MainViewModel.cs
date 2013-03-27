@@ -39,7 +39,9 @@ namespace WpfMapApplication
     {
       get { return _summaryText; }
       set { SetProperty(ref _summaryText, value); }
-    } 
+    }
+
+    public ICommand SearchCommand { get { return new SearchCommand(this); } }
 
     public Graphic CurrentResult
     {
@@ -64,5 +66,27 @@ namespace WpfMapApplication
       SummaryText = results.Count.ToString() + " found";
     }
 
+  }
+
+  class SearchCommand : ICommand
+  {
+    MainViewModel _vm;
+
+    public SearchCommand(MainViewModel vm)
+    {
+      _vm = vm;
+    }
+
+    public bool CanExecute(object parameter)
+    {
+      return true;
+    }
+
+    public event EventHandler CanExecuteChanged;
+
+    public void Execute(object parameter)
+    {
+      _vm.DoSearch();
+    }
   }
 }

@@ -93,7 +93,7 @@
                 Margin="5"
                 Width="75"
                 Content="Search"
-                Command="{Binding Converter={framework:CommandGenerator}, ConverterParameter=DoSearch}"/>
+                Command="{Binding SearchCommand}"/>
       </Grid>
 
       <ListBox BorderBrush="Transparent"
